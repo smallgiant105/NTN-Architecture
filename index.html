@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NTN NTN Architecture</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 2em;
+      line-height: 1.6;
+      font-weight: 200;
+      color: #f0f0f0; /* Light text for better contrast */
+      background: linear-gradient(135deg, #2074f1, #c3cfe2, #010031);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      transition: background 0.5s ease, color 0.3s ease;
+      text-align: center; /* center all text */
+    }
+
+    a {
+      color: #a3d7ff; /* lighter link color */
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #28e403;
+    }
+
+    nav {
+      background: rgba(0, 0, 50, 0.8);
+      padding: 15px 25px;
+      box-shadow: 0 10px 15px rgba(3, 2, 2, 0.76);
+      display: flex;
+      justify-content: center; /* center nav content */
+      align-items: center;
+      flex-wrap: wrap;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      gap: 40px;
+      color: #80d4ff;
+      font-weight: 600;
+      font-size: 1.2em;
+    }
+
+    nav div:first-child {
+      color: #68b6ff;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    header, section, nav, .info-card, .carousel-card {
+      transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease;
+      margin-bottom: 2em;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      background: rgba(0, 0, 50, 0.6);
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    }
+
+    header:hover, section:hover, .info-card:hover, .carousel-card:hover, nav:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 28px rgba(250, 249, 249, 0.5);
+      background-color: rgba(10, 10, 60, 0.85);
+    }
+
+    h1, h2, h3 {
+      color: #a6d6ff;
+      margin-bottom: 0.6em;
+    }
+
+    p, li {
+      font-weight: 300;
+      color: #e0e9ff;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li::before {
+      content: "✓";
+      color: #28e403;
+      margin-right: 8px;
+      font-weight: 700;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      justify-content: center;
+      max-width: 900px;
+      margin: 0 auto 3em auto;
+    }
+
+    .info-card {
+      flex: 1 1 350px;
+      background: rgba(10, 10, 50, 0.7);
+      padding: 1.5em;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      color: #dceeff;
+    }
+
+    .carousel-card {
+      min-width: 220px;
+      background: rgba(10, 10, 50, 0.7);
+      padding: 1.2em;
+      border-radius: 8px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+      text-align: center;
+      color: #dceeff;
+      margin-bottom: 1.5em;
+    }
+
+    img {
+      width: 90%;
+      max-width: 280px; /* reduced size */
+      max-height: 200px; /* smaller height */
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+      margin: 10px auto;
+      transition: transform 0.5s ease, filter 0.3s ease, opacity 0.4s ease;
+      cursor: pointer;
+      display: block;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+      opacity: 0.95;
+    }
+
+    button {
+      background-color: #3896e4;
+      color: #222;
+      padding: 0.8em 1.5em;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      margin-top: 1em;
+    }
+
+    button:hover {
+      background-color: #3cff00;
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(253, 4, 4, 0.3);
+    }
+
+    #contact img {
+      max-width: 320px;
+      max-height: 220px;
+      margin-bottom: 1em;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+    }
+
+    input[type="email"] {
+      padding: 10px;
+      border-radius: 6px;
+      max-width: 300px;
+      width: 100%;
+      margin-bottom: 10px;
+      border: none;
+      outline: none;
+      font-size: 1em;
+      box-shadow: 0 0 6px rgba(0,0,0,0.4);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3em;
+      color: #9ac9ff;
+      font-size: 14px;
+    }
+
+    footer p {
+      margin: 0.5em 0 0 0;
+      font-weight: 400;
+      color: #8db8ff;
+    }
+
+    @media (max-width: 768px) {
+      .card-container {
+        flex-direction: column;
+      }
+
+      img {
+        max-height: 180px;
+        max-width: 90%;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 15px;
+        font-size: 1em;
+      }
+
+      header, section, nav, .info-card, .carousel-card {
+        max-width: 90%;
+        padding: 15px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-content">
+    <nav data-aos="fade-down" data-aos-delay="0">
+      <div>TATEATI NATANGWE <br /> NEKOLA</div>
+      <div><a href="tel:+264-81-617-8940"> Call Me Now</a></div>
+    </nav>
+
+    <header data-aos="fade-up" data-aos-delay="100">
+      <h1>NTN NTN Architecture</h1>
+      <img src="/Heroplans 2.png" alt="Hero Banner" data-aos="zoom-in" data-aos-delay="200" />
+      <p data-aos="fade-up" data-aos-delay="300">
+        House plans (Single & double stories floor plans), site plans , up for grabs project plans check me out its free
+        have a look "Call and lets have a talk for your ideal customized plans".
+      </p>
+      <button onclick="alert('Let’s build your plans now!')" data-aos="zoom-in" data-aos-delay="400">YOUR PLANS NOW</button>
+    </header>
+
+    <div class="card-container">
+      <div class="info-card" data-aos="fade-up" data-aos-delay="100">
+        <h3>Our Mission</h3>
+        <p>
+          Bringing you, your customized house and site plans at the ease of your home just give us a call for your own
+          design or check us out in projects .
+        </p>
+      </div>
+      <div class="info-card" data-aos="fade-up" data-aos-delay="300">
+        <h3>Our Vision</h3>
+        <p>
+          Bringing you, your customized house and site plans at the ease of your home just give us a call for your own
+          design or check us out in projects .
+        </p>
+      </div>
+    </div>
+
+    <section data-aos="fade-up" data-aos-delay="100">
+      <h2 data-aos="fade-up" data-aos-delay="150">Benefits For You</h2>
+      <ul>
+        <li data-aos="fade-left" data-aos-delay="200">Customized House & Site plans</li>
+        <li data-aos="fade-left" data-aos-delay="250">Real Connection , Real Talk, Real Collaboration</li>
+      </ul>
+    </section>
+
+    <section id="portfolio" data-aos="fade-up" data-aos-delay="100">
+      <h1>PLANS</h1>
+
+      <div class="carousel-card" data-aos="zoom-in" data-aos-delay="200">
+        <h2>Floor</h2>
+        <img src="/floor plans 2.jpg" alt="Floor PLANS" />
+        <img src="/floor plan 4.png" alt="Floor PLANS" />
+        <img src="/floor plan 5.png" alt="Floor PLANS" />
+        <img src="/floor plan 7.png" alt="Floor PLANS" />
+        <img src="/floor plan 8.png" alt="Floor PLANS" />
+        <p><em>Creative Designs</em></p>
+      </div>
+
+      <div class="carousel-card" data-aos="zoom-in" data-aos-delay="300">
+        <h2>Site</h2>
+        <img src="/Site plan.png" alt="SITE PLANS" />
+        <img src="/site plan 2.png" alt="SITE PLANS" />
+        <p><em>Imagination at your glance</em></p>
+      </div>
+
+      <div class="carousel-card" data-aos="zoom-in" data-aos-delay="400">
+        <h2>Sale</h2>
+        <img src="/sale1.png" alt="sale PLANS" />
+        <img src="/sale2.png" alt="sale PLANS" />
+        <img src="/sale3.png" alt="sale PLANS" />
+        <p><em>Purchase your plans now from as little as N$85/m2!</em></p>
+      </div>
+    </section>
+
+    <section id="contact" data-aos="fade-up" data-aos-delay="100">
+      <img src="/code/html/img/pexels-morningtrain-18105.jpg" alt="About Image 1" data-aos="zoom-in" data-aos-delay="200" />
+      <p>Facebook: <a href="">Dux Mayovi</a></p>
+      <p>Instagram: <a href="">NTN NTN Architecture</a></p>
+      <p>Phone: <a href="tel:+264-81-617-8940">+264-81-617-8940</a></p>
+      <p>Email: <a href="mailto:natangwenekola@gmail.com">natangwenekola0810@gmail.com</a></p>
+      <a href="mailto:natangwenekola@gmail.com">
+        <button onclick="alert('Thanks for subscribing!')" data-aos="zoom-in" data-aos-delay="300">Subscribe</button>
+      </a>
+      <input
+        type="email"
+        placeholder="Enter your email"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      />
+
+      <footer>
+        © 2025 NTN NTN Architecture All rights reserved.
+      </footer>
+      <footer>
+        <center>
+        <p>Proudly Sponsored By :</p>
+        </center>
+        © 2025 SMALL GIANT INV CC. All rights reserved.
+      </footer>
+    </section>
+  </div>
+
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true,
+      duration: 800,
+      easing: 'ease-out',
+      offset: 120,
+    });
+  </script>
+</body>
+</html>
