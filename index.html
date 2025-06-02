@@ -37,7 +37,7 @@
       padding: 15px 25px;
       box-shadow: 0 10px 15px rgba(3, 2, 2, 0.76);
       display: flex;
-      justify-content: center; /* center nav content */
+      justify-content: center;
       align-items: center;
       flex-wrap: wrap;
       border-radius: 10px;
@@ -48,12 +48,35 @@
       font-size: 1.2em;
     }
 
-    nav div:first-child {
+    .logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo {
+      height: 50px;
+      width: auto;
+      border-radius: 8px;
+    }
+
+    .nav-title {
       color: #68b6ff;
       font-weight: 700;
       line-height: 1.2;
       text-align: center;
     }
+
+    nav a {
+      color: #80d4ff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #28e403;
+    }
+
 
     header, section, nav, .info-card, .carousel-card {
       transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease;
